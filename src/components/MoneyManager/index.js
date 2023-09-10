@@ -16,7 +16,7 @@ const transactionTypeOptions = [
 ]
 
 class MoneyManager extends Component {
-  state = {title: '', amount: '', list: [], optionId: 'Income'}
+  state = {title: '', amount: '', list: [], optionId: 'INCOME'}
 
   changeType = event => {
     this.setState({optionId: event.target.value})
@@ -45,7 +45,7 @@ class MoneyManager extends Component {
       list: [...pre.list, item],
       title: '',
       amount: '',
-      optionId: 'Income',
+      optionId: 'INCOME',
     }))
   }
 
@@ -63,7 +63,7 @@ class MoneyManager extends Component {
       <div className="container">
         <div>
           <div className="introCard">
-            <h1 className="name">HI, Richard</h1>
+            <h1 className="name">Hi, Richard</h1>
             <p className="welcome">
               Welcome back to your <span>Money Manager</span>
             </p>
@@ -71,76 +71,77 @@ class MoneyManager extends Component {
 
           <MoneyDetails arr={list} />
 
-          <div className="transactionAndHistory">
-            <div className="card">
+          <div className="flex">
+            <div className="transactionAndHistory">
               <form>
-                <h1 className="head">Add Transaction</h1>
-                <label htmlFor="title" className="label">
-                  TITLE
-                </label>
-                <input
-                  type="text"
-                  className="input"
-                  id="title"
-                  value={title}
-                  onChange={this.changeTitle}
-                  placeholder="TITLE"
-                />
-                <label htmlFor="account" className="label">
-                  TITLE
-                </label>
-                <input
-                  type="text"
-                  className="input"
-                  id="account"
-                  value={amount}
-                  onChange={this.changeAmount}
-                  placeholder="AMOUNT"
-                />
+                <div className="card">
+                  <h1 className="head">Add Transaction</h1>
+                  <label htmlFor="title" className="label">
+                    TITLE
+                  </label>
+                  <input
+                    type="text"
+                    className="input"
+                    id="title"
+                    value={title}
+                    onChange={this.changeTitle}
+                    placeholder="TITLE"
+                  />
+                  <label htmlFor="account" className="label">
+                    AMOUNT
+                  </label>
+                  <input
+                    type="text"
+                    className="input"
+                    id="account"
+                    value={amount}
+                    onChange={this.changeAmount}
+                    placeholder="AMOUNT"
+                  />
 
-                <label htmlFor="select" className="label">
-                  TITLE
-                </label>
-                <select
-                  id="select"
-                  className="input"
-                  value={optionId}
-                  onChange={this.changeType}
-                >
-                  <option
-                    value={transactionTypeOptions[0].displayText}
-                    selected
+                  <label htmlFor="select" className="label">
+                    TYPE
+                  </label>
+                  <select
+                    id="select"
+                    className="input"
+                    value={optionId}
+                    onChange={this.changeType}
                   >
-                    {transactionTypeOptions[0].displayText}
-                  </option>
-                  <option value={transactionTypeOptions[1].displayText}>
-                    {transactionTypeOptions[1].displayText}
-                  </option>
-                </select>
+                    <option value={transactionTypeOptions[0].optionId} selected>
+                      {transactionTypeOptions[0].displayText}
+                    </option>
+                    <option value={transactionTypeOptions[1].optionId}>
+                      {transactionTypeOptions[1].displayText}
+                    </option>
+                  </select>
 
-                <button type="button" className="add" onClick={this.addItem}>
-                  Add
-                </button>
+                  <button type="button" className="add" onClick={this.addItem}>
+                    Add
+                  </button>
+                </div>
               </form>
             </div>
-          </div>
 
-          <div className="card">
-            <h1 className="head">History</h1>
-            <div className="historyItemCard">
-              <p className="para">Title</p>
-              <p className="para">Amount</p>
-              <p className="para">Type</p>
+            <div className="transactionAndHistory">
+              <h1 className="head">History</h1>
+              <div className="historyItemCard">
+                <p className="para text">Title</p>
+                <p className="para">Amount</p>
+                <p className="para">Type</p>
+                <p className="hide">.</p>
+              </div>
+              <ul className="list">
+                {list.map(each => (
+                  <TransactionItem
+                    key={each.id}
+                    eachItem={each}
+                    optionList={transactionTypeOptions}
+                    func={this.deleteItem}
+                  />
+                ))}
+              </ul>
             </div>
-            <ul className="list">
-              {list.map(each => (
-                <TransactionItem
-                  key={each.id}
-                  eachItem={each}
-                  func={this.deleteItem}
-                />
-              ))}
-            </ul>
           </div>
         </div>
       </div>

@@ -3,18 +3,16 @@ import './index.css'
 const MoneyDetails = props => {
   const {arr} = props
 
-  const incomeList = arr.filter(each => each.type === 'Income')
-  const expensesList = arr.filter(each => each.type === 'Expenses')
-  const income = incomeList.reduce((each, next) => each.amount + next.amount)
-  const expenses = expensesList.reduce(
-    (each, next) => each.amount + next.amount,
-  )
+  const incomeList = arr.filter(each => each.type === 'INCOME')
+  const expensesList = arr.filter(each => each.type === 'EXPENSES')
+  const income = incomeList.reduce((total, next) => total + next.amount, 0)
+  const expenses = expensesList.reduce((total, next) => total + next.amount, 0)
 
   const total = income - expenses
 
   return (
     <div className="moneyDetailsCard">
-      <div className="balanceCard">
+      <div className="balanceCard moneycard">
         <img
           src="https://assets.ccbp.in/frontend/react-js/money-manager/balance-image.png"
           alt="balance"
@@ -28,7 +26,7 @@ const MoneyDetails = props => {
         </div>
       </div>
 
-      <div className="incomeCard">
+      <div className="incomeCard moneycard">
         <img
           src="https://assets.ccbp.in/frontend/react-js/money-manager/income-image.png"
           alt="income"
@@ -42,7 +40,7 @@ const MoneyDetails = props => {
         </div>
       </div>
 
-      <div className="expensesCard">
+      <div className="expensesCard moneycard">
         <img
           src="https://assets.ccbp.in/frontend/react-js/money-manager/expenses-image.png"
           alt="expenses"

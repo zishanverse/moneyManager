@@ -1,1 +1,22 @@
-/* Write your CSS here */
+.btn {
+  height: 19px;
+  padding: 0px;
+  width: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 0px;
+  margin-right: 20px;
+}
+.delete {
+  height: 20px;
+}
+.itemText {
+  font-size: 15px;
+  width: 90px;
+  color: #334155;
+}
+.text {
+  margin-left: 20px;
+}

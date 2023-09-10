@@ -1,18 +1,20 @@
 import './index.css'
 
 const TransactionItem = props => {
-  const {eachItem, func} = props
+  const {eachItem, optionList, func} = props
   const {id, title, amount, type} = eachItem
 
   const deleteItem = () => {
     func(id)
   }
 
+  const displayTextItem = optionList.filter(each => each.optionId === type)
+
   return (
-    <div className="historyItemCard">
-      <p className="itemText">{title}</p>
+    <li className="historyItemCard">
+      <p className="itemText text">{title}</p>
       <p className="itemText">Rs {amount}</p>
-      <p className="itemText">{type}</p>
+      <p className="itemText">{displayTextItem[0].displayText}</p>
       <button
         type="button"
         data-testid="delete"
@@ -25,7 +27,7 @@ const TransactionItem = props => {
           className="delete"
         />
       </button>
-    </div>
+    </li>
   )
 }
 

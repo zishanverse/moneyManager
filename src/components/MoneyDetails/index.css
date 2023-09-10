@@ -1,1 +1,45 @@
-/* Write your CSS here */
+.balanceCard {
+  background-color: #ecfccb;
+  border: 2px solid #84cc16;
+}
+.incomeCard {
+  background-color: #cffafe;
+  border: 2px solid #06b6d4;
+}
+.expensesCard {
+  background-color: #ede9fe;
+  border: 2px solid #7c3aed;
+}
+
+.moneycard {
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.imgBalance {
+  height: 80px;
+  margin-right: 25px;
+}
+.yourStatus {
+  color: #475569;
+  font-family: 'Roboto';
+  font-size: 15px;
+}
+.rupees {
+  color: #1e293b;
+  font-family: 'Roboto';
+  font-size: 19px;
+}
+
+@media (min-width: 768px) {
+  .moneyDetailsCard {
+    display: flex;
+    width: 92vw;
+  }
+  .moneycard {
+    margin-right: 25px;
+    width: 33vw;
+  }
+}
